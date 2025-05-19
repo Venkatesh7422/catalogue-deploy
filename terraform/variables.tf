@@ -22,3 +22,7 @@ variable "common_tags" {
   variable "zone_name" {
    default = "venky.shop"
   }
+
+  variable "app_version" {
+    
+  }

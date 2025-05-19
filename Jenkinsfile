@@ -14,15 +14,24 @@ pipeline {
     }
     parameters {
         string(name: 'version', defaultValue: '', description: 'What is the artifact version?')
-        string(name: 'environment', defaultValue: '', description: 'What is the environment?')
+        string(name: 'environment', defaultValue: 'dev', description: 'What is the environment?')
            }
     //build
     stages {
-        stage('Deploy') {
+        stage('Print version') {
             steps {
                 sh """
                     echo "version: ${params.version}"
                     echo "environment: ${params.environment}"
+                """
+                }
+            }
+
+             stage('Init') {
+            steps {
+                sh """
+                    cd terraform
+                    terraform init --backend-config=${params.environment}/backend.tf-reconfigure
                 """
                 }
             }
