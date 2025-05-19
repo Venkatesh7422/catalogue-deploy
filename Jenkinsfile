@@ -27,7 +27,6 @@ pipeline {
                 }
             }
         }
-    }
     //psot build
       post { 
         always { 
@@ -42,3 +41,4 @@ pipeline {
         }
     }
 }
+
